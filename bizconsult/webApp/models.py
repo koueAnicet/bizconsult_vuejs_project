@@ -4,7 +4,7 @@ from django.db import models
 
 class Site_info(models.Model):
     name_site = models.CharField(max_length=50)
-    phone_site = models.IntegerField()
+    phone_site = models.CharField(max_length=15)
     email_site = models.EmailField(max_length=100)
     address_site = models.CharField(max_length=100)
     copyright_site = models.CharField(max_length=100)
@@ -12,6 +12,8 @@ class Site_info(models.Model):
     created_at = models.DateTimeField(auto_now=True)
     updated_at = models.DateTimeField(auto_now_add=True)
     deleted_at = models.DateTimeField(null=True)
+    def __str__(self):
+        return self.name_site
 
 class Banner (models.Model):
     title_banner = models.CharField(max_length=255) 
@@ -21,24 +23,64 @@ class Banner (models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
     deleted_at = models.DateTimeField(null=True)
 
+    def __str__(self):
+        return self.title_banner
 
-class Service(models.Model):
-    label_service = models.CharField(max_length=255)
-    icon_service = models.CharField(max_length=30)
-    title_service = models.CharField(max_length=30)
-    description_service = models.TextField()
+
+class Social_Network(models.Model):
+    twitter_network = models.URLField(null=True)
+    facebook_network =  models.URLField(null=True)
+    youtube_network =  models.URLField(null=True)
+    instagram_network =  models.URLField(null=True)
+    linkedin_network = models.URLField(null=True)
+
+    created_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now_add=True)
+    deleted_at = models.DateTimeField(null=True)
+
+class Contact(models.Model):
+    name_contact = models.CharField(max_length=15)
+    email_contact = models.EmailField(max_length=255)
+    service_contact = models.CharField(max_length=50)
+    comments_contact = models.TextField()
 
     created_at = models.DateTimeField(auto_now=True)
     updated_at = models.DateTimeField(auto_now_add=True)
     deleted_at = models.DateTimeField(null=True)
 
-class Reseau_social(models.Model):
-    twitter_Reseau = models.URLField(null=True)
-    facebook_Reseau =  models.URLField(null=True)
-    youtube_Reseau =  models.URLField(null=True)
-    instagram_Reseau =  models.URLField(null=True)
-    linkedin_Reseau = models.URLField(null=True)
+    def __str__(self):
+        return self.name_contact
+class Potentialite(models.Model):
+    Icon_Type_about = models.CharField(max_length=20)
+    title_Type_about = models.CharField(max_length=50)
+    description_Type_about = models.TextField()
 
     created_at = models.DateTimeField(auto_now=True)
     updated_at = models.DateTimeField(auto_now_add=True)
     deleted_at = models.DateTimeField(null=True)
+
+    def __str__(self) -> str:
+        return self.title_Type_about
+
+class Feature(models.Model):
+    label_feature=models.CharField (max_length=50)
+    Description = models.TextField()
+    
+    created_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now_add=True)
+    deleted_at = models.DateTimeField(null=True)
+
+class About(models.Model):
+    title_about = models.CharField(max_length=255)
+    description_about = models.TextField()
+    image_about = models.FileField(upload_to="image_about")
+
+    created_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now_add=True)
+    deleted_at = models.DateTimeField(null=True)
+
+    def __str__(self):
+        return self.title_about
+
+
+

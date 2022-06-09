@@ -1,8 +1,19 @@
 from django.shortcuts import render
+from webApp.models import*
+from serviceConseilApp.models import*
+
 
 # Create your views here.
-
 def index(request):
+    site_info = Site_info.objects.first()
+    banner = Banner.objects.first()
+    social_network = Social_Network.objects.all()
+    potentialite = Potentialite.objects.all()
+    feature = Feature.objects.first()
+    about = About.objects.first()
+    service = Service.objects.all()
+    team =Team.objects.all()
+    testimonial =Testimonial.objects.all()
     return render(request, 'bizconsult/index.html', locals())
 def home(request):
     return render(request, 'bizconsult/home.html', locals())
