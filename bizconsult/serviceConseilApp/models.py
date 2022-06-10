@@ -11,14 +11,6 @@ class Service(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
     deleted_at = models.DateTimeField(null=True)
 
-class Reseau_social_team(models.Model):
-    facebook_team = models.URLField(null=True)
-    twitter_team = models.URLField(null=True)
-    linkedin_team = models.URLField(null=True)
-
-    created_at = models.DateTimeField(auto_now=True)
-    updated_at = models.DateTimeField(auto_now_add=True)
-    deleted_at = models.DateTimeField(null=True)
     
 class Team(models.Model):
     
@@ -26,14 +18,25 @@ class Team(models.Model):
     last_name_team = models.CharField(max_length=100)
     job_team = models.CharField(max_length=100)
     image_team = models.FileField(upload_to="img_team")
-    reseau_social = models.ForeignKey(Reseau_social_team , on_delete=models.CASCADE )
+   
 
     created_at = models.DateTimeField(auto_now=True)
     updated_at = models.DateTimeField(auto_now_add=True)
     deleted_at = models.DateTimeField(null=True)
 
-    def __str__(self) -> str:
+    def __str__(self):
         return self.name_team
+
+class Reseau_social_team(models.Model):
+    name = models.CharField(max_length=50)
+    icon = models.CharField(max_length=50) 
+    link = models.URLField(null=True) 
+    team = models.ForeignKey(Team,related_name='userTeamSocial', on_delete=models.CASCADE)
+
+    created_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now_add=True)
+    deleted_at = models.DateTimeField(null=True)
+
 
 class Testimonial(models.Model):
     name_Testimonial = models.CharField(max_length=50)

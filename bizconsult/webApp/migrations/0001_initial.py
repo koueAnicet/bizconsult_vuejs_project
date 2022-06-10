@@ -29,7 +29,7 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name_contact', models.CharField(max_length=15)),
                 ('email_contact', models.EmailField(max_length=255)),
-                ('service_contact', models.CharField(max_length=50)),
+                
                 ('comments_contact', models.TextField()),
                 ('created_at', models.DateTimeField(auto_now=True)),
                 ('updated_at', models.DateTimeField(auto_now_add=True)),

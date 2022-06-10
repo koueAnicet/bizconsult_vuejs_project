@@ -41,7 +41,7 @@ class Social_Network(models.Model):
 class Contact(models.Model):
     name_contact = models.CharField(max_length=15)
     email_contact = models.EmailField(max_length=255)
-    service_contact = models.CharField(max_length=50)
+    subject_contact = models.CharField(max_length=50)
     comments_contact = models.TextField()
 
     created_at = models.DateTimeField(auto_now=True)
@@ -50,25 +50,29 @@ class Contact(models.Model):
 
     def __str__(self):
         return self.name_contact
+
 class Potentialite(models.Model):
-    Icon_Type_about = models.CharField(max_length=20)
-    title_Type_about = models.CharField(max_length=50)
-    description_Type_about = models.TextField()
+    Icon = models.CharField(max_length=20)
+    title = models.CharField(max_length=50)
+    description= models.TextField()
 
     created_at = models.DateTimeField(auto_now=True)
     updated_at = models.DateTimeField(auto_now_add=True)
     deleted_at = models.DateTimeField(null=True)
 
-    def __str__(self) -> str:
-        return self.title_Type_about
+    def __str__(self):
+        return self.title 
 
 class Feature(models.Model):
-    label_feature=models.CharField (max_length=50)
-    Description = models.TextField()
+    label_feature = models.CharField (max_length=50)
+    description = models.TextField()
+    
     
     created_at = models.DateTimeField(auto_now=True)
     updated_at = models.DateTimeField(auto_now_add=True)
     deleted_at = models.DateTimeField(null=True)
+    def __str__(self):
+        return self.label_feature
 
 class About(models.Model):
     title_about = models.CharField(max_length=255)

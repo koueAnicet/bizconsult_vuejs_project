@@ -13,34 +13,35 @@
         <div class="row justify-content-center">
             <div class="col-lg-7 wow fadeInUp" data-wow-delay="0.3s">
                 <p class="text-center mb-4">The contact form is currently inactive. Get a functional and working contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're done. <a href="https://htmlcodex.com/contact-form">Download Now</a>.</p>
-                <form>
+                <form id="TagsForm"  action="post">
+                     {% csrf_token %} <!-- protection contre les jetons d'injections js-->
                     <div class="row g-3">
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="name" placeholder="Your Name">
+                                <input type="text" class="form-control" id="id_name" placeholder="Your Name" name="name"  v-model="name">
                                 <label for="name">Your Name</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="email" class="form-control" id="email" placeholder="Your Email">
+                                <input type="email" class="form-control" id="id_email" placeholder="Your Email"  name="email"  v-model="email">
                                 <label for="email">Your Email</label>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="subject" placeholder="Subject">
+                                <input type="text" class="form-control" id="id_subject" placeholder="Subject"  name="subjects"  v-model="subjects">
                                 <label for="subject">Subject</label>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="form-floating">
-                                <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 150px"></textarea>
+                                <textarea class="form-control" placeholder="Leave a message here" id="id_message" style="height: 150px"  name="messag"  v-model="messag"></textarea>
                                 <label for="message">Message</label>
                             </div>
                         </div>
                         <div class="col-12">
-                            <button class="btn btn-primary w-100 py-3" type="submit">Send Message</button>
+                            <button class="btn btn-primary w-100 py-3"  @click.prevent="post_data" type="submit">Send Message</button>
                         </div>
                     </div>
                 </form>
@@ -49,4 +50,56 @@
     </div>
 </div>
 <!-- Contact End -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    var app2 = new vue({
+        el: "TagsForm"
+        data:{
+            name: '',
+            email: '',
+            subjects:'',
+            comments:'',
+            url:"{% url 'contact' %}"
+        },
+        method:{
+            post_data(){
+                if(this.name === '' || this.email === '' || this.subjects === ''|| this.comments === ''){
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Veuillez remplir tous les champs',
+                      })
+                      else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.email)){
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Email Error',
+                            text: 'Veuillez remplir tous les champs',
+                          })
+                    }
+                    else{
+                        axios.defaults.xsrfHeaderName = 'X-CSRFToken'
+                        axios.defaults.xsrfCookieName = 'csrftoken'
+
+                        let form = new FormData()
+                        form.append('nom', this.name)
+                        form.append('prenom', this.email)
+                        form.append('email', this.subjects)
+                        form.append('email', this.comments)
+                        axios.post(this.url, form).then((response)=>{
+                            if(response.data.success){
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Oops...',
+                                    text: response.data.alert,
+                                  })
+                            }
+                        })
+
+                    }
+            }
+        }
+    })
+</script>
 {% endblock 'main' %}
