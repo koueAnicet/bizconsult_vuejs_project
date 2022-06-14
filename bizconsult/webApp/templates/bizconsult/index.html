@@ -187,11 +187,9 @@
                     <p class="mb-4">{{ teams.job_team }}</p>
                     <img class="img-fluid rounded-circle w-100 mb-4" src="{{ teams.image_team.url }}" alt="">
                     <div class="d-flex justify-content-center">
-                        {% for net in teams.userTeamSocial.all %}
-                        
+                    {% for net in teams.userTeamSocial.all %}
                         <a class="btn btn-square text-primary bg-white m-1" href="{{ net.link }}"><i class="{{ net.icon }}"></i></a>
-                              
-                        {% endfor %}
+                    {% endfor %}
                        <!--<a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-twitter"></i></a>
                         <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-linkedin-in"></i></a>--> 
                     </div>

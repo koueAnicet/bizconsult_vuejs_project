@@ -1,4 +1,4 @@
-{% extends 'bizconsult/base/base.html' %}
+{% extends 'bizconsult/base/nava.html' %}
 {% load static %}
 
 {% block 'main' %}
@@ -13,7 +13,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-7 wow fadeInUp" data-wow-delay="0.3s">
                 <p class="text-center mb-4">The contact form is currently inactive. Get a functional and working contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're done. <a href="https://htmlcodex.com/contact-form">Download Now</a>.</p>
-                <form id="TagsForm"  action="post">
+                <form id="TagsForm"  method="POST">
                      {% csrf_token %} <!-- protection contre les jetons d'injections js-->
                     <div class="row g-3">
                         <div class="col-md-6">
@@ -36,10 +36,12 @@
                         </div>
                         <div class="col-12">
                             <div class="form-floating">
-                                <textarea class="form-control" placeholder="Leave a message here" id="id_message" style="height: 150px"  name="messag"  v-model="messag"></textarea>
+                                <textarea class="form-control" placeholder="Leave a message here" id="id_message" style="height: 150px"  name="message"  v-model="messag"></textarea>
                                 <label for="message">Message</label>
                             </div>
+                        
                         </div>
+                        
                         <div class="col-12">
                             <button class="btn btn-primary w-100 py-3"  @click.prevent="post_data" type="submit">Send Message</button>
                         </div>
@@ -53,7 +55,7 @@
 <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script>
+<!--<script>
     var app2 = new vue({
         el: "TagsForm"
         data:{
@@ -101,5 +103,5 @@
             }
         }
     })
-</script>
+</script>-->
 {% endblock 'main' %}
