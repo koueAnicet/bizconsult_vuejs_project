@@ -1,2 +1,4 @@
 django 4.0.5
 django jet reboot -> pypi
+#------API--------
+pip install djangorestframework 

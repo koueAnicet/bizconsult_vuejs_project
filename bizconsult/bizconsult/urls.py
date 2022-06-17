@@ -18,10 +18,19 @@ from django.urls import path,include
 #----
 from django.conf import settings
 from django.conf.urls.static import static
+#----
+from rest_framework import routers
+from webApp.urls_api import router as webApp_router
+#ajouter router
+
+router = routers.DefaultRouter()
+#creation locale
+router.registry.extend(webApp_router.registry)
 
 urlpatterns = [
     path ( 'jet/' ,  include ( 'jet.urls' ,  'jet' )),   # Django JET URLs
     path('jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),  # Django JET dashboard URLS
     path('admin/', admin.site.urls),
     path('', include("webApp.urls")),
+    path('api/',include(router.urls))
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)# permet d'afficher les images

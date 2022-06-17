@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'webApp.apps.WebappConfig',
     'serviceConseilApp',
+    'rest_framework',#Réglages: Le module de paramètres
 ]
 
 MIDDLEWARE = [
@@ -66,7 +67,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'bizconsult.context_processors.global_Site_info',#add
+                'bizconsult.context_processors.global_Site_info',#add     
             ],
         },
     },

@@ -41,7 +41,7 @@ class Social_Network(models.Model):
 class Contact(models.Model):
     name_contact = models.CharField(max_length=15)
     email_contact = models.EmailField(max_length=255)
-    subject_contact = models.CharField(max_length=50)
+    subject_contact = models.CharField(max_length=50)                  
     comments_contact = models.TextField()
 
     created_at = models.DateTimeField(auto_now=True)
