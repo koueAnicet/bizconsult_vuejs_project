@@ -24,11 +24,13 @@ class WebappSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Potentialite
         fields = '__all__'
-
-    class Meta:
-        model = models.Feature
-        fields = '__all__'
-
+ 
     class Meta:
         model = models.Banner
         fields = '__all__'
+
+    # class Meta:
+    #     model = models.Feature
+    #     fields = '__all__'
+
+   

@@ -14,9 +14,6 @@ class AboutViewSet(viewsets.ModelViewSet):
     queryset = models.About.objects.all()
     serializer_class = WebappSerializer
 
-class FeatureViewSet(viewsets.ModelViewSet):
-    queryset = models.Feature.objects.all()
-    serializer_class = WebappSerializer
 
 class ContactViewSet(viewsets.ModelViewSet):
     queryset = models.Contact.objects.all()
@@ -29,3 +26,8 @@ class PotentialiteViewiewSet(viewsets.ModelViewSet):
 class BannerViewSet(viewsets.ModelViewSet):
     queryset = models.Banner.objects.all()
     serializer_class = WebappSerializer
+
+# class FeatureViewSet(viewsets.ModelViewSet):
+#     queryset = models.Feature.objects.all()
+#     serializer_class = WebappSerializer
+
