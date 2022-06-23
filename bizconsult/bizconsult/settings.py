@@ -42,6 +42,9 @@ INSTALLED_APPS = [
     'webApp.apps.WebappConfig',
     'serviceConseilApp',
     'rest_framework',#Réglages: Le module de paramètres
+    'drf_yasg2',#schémas Swagger/OpenAPI 2.0
+    'django.contrib.staticfiles', # Required for GraphiQL
+    'graphene_django',
 ]
 
 MIDDLEWARE = [
@@ -130,3 +133,7 @@ MEDIA_URLS ='media/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+GRAPHENE = {
+    "SCHEMA": "django_root.schema.schema"
+}
