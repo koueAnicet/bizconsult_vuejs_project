@@ -28,6 +28,7 @@ from drf_yasg2 import openapi
 
 #----
 from graphene_django.views import GraphQLView
+from webApp.schema import schema
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -59,6 +60,6 @@ urlpatterns = [
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     #------
-    path("graphql", GraphQLView.as_view(graphiql=False)),
+    path("graphql/", GraphQLView.as_view(graphiql=True, schema=schema)),
     
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)# permet d'afficher les images
