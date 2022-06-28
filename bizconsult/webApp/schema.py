@@ -1,20 +1,22 @@
 import graphene
 from graphene_django import DjangoObjectType
-from serviceConseilApp import models as modelsService
+from serviceConseilApp.models import Service
 
-class ServiceType(DjangoObjectType):
+class List_Service(DjangoObjectType):
+    
     class Meta:
-        model = modelsService.Service
+        model = Service
+        fields = ('icon_service','title_service','description_service',)
          # ('icon_service','title_service','description_service',)
 
         
         #formatage des données en utilisant une class comm requete
 
 class Query(graphene.ObjectType):
-    all_services = graphene.List(ServiceType)
-    def resolve_all_service(self):
-        
-        return modelsService.Service.objects.all()
+    all_services = graphene.List(List_Service)
+
+    def resolve_all_services(root,info):
+        return Service.objects.all()
          #return Service.objects.filter(title ="django")
 
 #nous avons notre schema à interoger

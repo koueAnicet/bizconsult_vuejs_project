@@ -49,7 +49,7 @@ INSTALLED_APPS = [
 
 
 GRAPHENE = {
-    'SCHEMA': 'app.schema.schema' # Where your Graphene schema lives
+    'SCHEMA': 'bizconsult.schema.schema' # Where your Graphene schema lives
 }
 
 
