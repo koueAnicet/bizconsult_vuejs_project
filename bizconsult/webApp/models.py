@@ -15,7 +15,7 @@ class Site_info(models.Model):
     def __str__(self):
         return self.name_site
 
-class Banner (models.Model):
+class Banner(models.Model):
     title_banner = models.CharField(max_length=255) 
     description_banner = models.TextField()
 
