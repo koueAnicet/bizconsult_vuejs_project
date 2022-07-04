@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
+<<<<<<< Updated upstream
+=======
+import django_heroku3
+>>>>>>> Stashed changes
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,7 +29,11 @@ SECRET_KEY = 'django-insecure-1!g7--wdii7+whe@yuwo073dq-6=_!!qc1uu&-1$*)inxeb6oo
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+<<<<<<< Updated upstream
 ALLOWED_HOSTS = []
+=======
+ALLOWED_HOSTS = ['jrbizconsultdjango.herokuapp.com']
+>>>>>>> Stashed changes
 
 
 # Application definition
@@ -130,3 +138,8 @@ MEDIA_URLS ='media/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+<<<<<<< Updated upstream
+=======
+
+django_heroku3.settings(locals())
+>>>>>>> Stashed changes
