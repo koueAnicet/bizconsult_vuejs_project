@@ -50,7 +50,16 @@ INSTALLED_APPS = [
     'webApp.apps.WebappConfig',
     'serviceConseilApp',
     'rest_framework',#Réglages: Le module de paramètres
+    'drf_yasg2',#schémas Swagger/OpenAPI 2.0
+     # Required for GraphiQL
+    'graphene_django',
 ]
+
+
+GRAPHENE = {
+    'SCHEMA': 'bizconsult.schema.schema' # Where your Graphene schema lives
+}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -138,8 +147,15 @@ MEDIA_URLS ='media/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
 
 django_heroku3.settings(locals())
 >>>>>>> Stashed changes
+=======
+
+# GRAPHENE = {
+#     "SCHEMA": "django_root.schema.schema"
+# }
+>>>>>>> 2fad3d38a8b19247d1c289c7b65e73ba687c8ec8

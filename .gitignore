@@ -1,3 +1,8 @@
 env/
+<<<<<<< HEAD
 ../envWin/
 envWin/
+=======
+README.md
+bizconsult/db.sqlite3
+>>>>>>> 2fad3d38a8b19247d1c289c7b65e73ba687c8ec8
